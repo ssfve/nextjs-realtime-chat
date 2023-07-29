@@ -25,13 +25,15 @@ const Page: FC = () => {
     <>
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full flex flex-col items-center max-w-md space-y-8'>
-          <div className='flex flex-col items-center gap-8'>
-            <Image
+          <Image
+              className='w-6 max-w-xl lg:max-w-3xl'
               referrerPolicy='no-referrer'
-              className='rounded-full'
               alt={`profile picture`}
-              src={'logo.png'}
-              fill/>
+              src='/logo.png'
+              fill
+              />
+          <div className='flex flex-col items-center gap-8'>
+          
             <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
               Freely Chat with Friends or AI. 
             </h2>
