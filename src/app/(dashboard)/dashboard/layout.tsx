@@ -19,7 +19,7 @@ interface LayoutProps {
 
 // Done after the video and optional: add page metadata
 export const metadata = {
-  title: 'FriendZone | Dashboard',
+  title: 'Chat Place | Dashboard',
   description: 'Your dashboard',
 }
 
