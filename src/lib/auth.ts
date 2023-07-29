@@ -37,6 +37,9 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: getGoogleCredentials().clientId,
       clientSecret: getGoogleCredentials().clientSecret,
+      httpOptions: {
+        timeout: 40000,
+      },
     }),
   ],
   callbacks: {
