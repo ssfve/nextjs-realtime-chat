@@ -31,7 +31,6 @@ const Page: FC = () => {
             src="/background.jpeg"
             alt="background image"
             fill
-            style={{objectFit: "cover"}}
           />
         </div>
         <div className='w-full flex flex-col items-center max-w-md space-y-8'>
