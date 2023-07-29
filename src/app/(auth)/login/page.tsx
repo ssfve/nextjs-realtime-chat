@@ -45,7 +45,7 @@ const Page: FC = () => {
           />
 
           <h2 className='relative mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
-            Freely Chat with Friends or AI
+            Chat Freely with Friends or AI
           </h2>
 
           <Button
