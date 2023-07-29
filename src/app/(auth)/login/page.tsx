@@ -25,19 +25,23 @@ const Page: FC = () => {
     <>
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full flex flex-col items-center max-w-md space-y-8'>
-          <Image
-              className='w-6 max-w-xl lg:max-w-3xl'
-              referrerPolicy='no-referrer'
-              alt={`profile picture`}
-              src='/logo.png'
-              fill
-              />
-          <div className='flex flex-col items-center gap-8'>
+          {/* <div className='flex flex-col items-center gap-2'> */}
+            <Image
+                className='relative w-full max-w-xl lg:max-w-3xl aspect-square lg:relative'
+                referrerPolicy='no-referrer'
+                alt={`profile picture`}
+                src='/logo.png'
+                width={640}
+                height={640}
+                // fill
+                />
+          {/* </div> */}
+          {/* <div className='flex flex-col items-center gap-8'> */}
           
             <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
               Freely Chat with Friends or AI. 
             </h2>
-          </div>
+          {/* </div> */}
 
           <Button
             isLoading={isLoading}
