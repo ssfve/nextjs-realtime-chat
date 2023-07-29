@@ -23,30 +23,35 @@ const Page: FC = () => {
 
   return (
     <>
+
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+        <div className="absolute inset-0">
+          <Image
+            referrerPolicy='no-referrer'
+            src="/background.jpeg"
+            alt="background image"
+            fill
+            style={{objectFit: "cover"}}
+          />
+        </div>
         <div className='w-full flex flex-col items-center max-w-md space-y-8'>
-          {/* <div className='flex flex-col items-center gap-2'> */}
-            <Image
-                className='relative w-full max-w-xl lg:max-w-3xl aspect-square lg:relative'
-                referrerPolicy='no-referrer'
-                alt={`profile picture`}
-                src='/logo.png'
-                width={640}
-                height={640}
-                // fill
-                />
-          {/* </div> */}
-          {/* <div className='flex flex-col items-center gap-8'> */}
-          
-            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
-              Freely Chat with Friends or AI. 
-            </h2>
-          {/* </div> */}
+          <Image
+            className='relative w-full max-w-xl lg:max-w-3xl aspect-square lg:relative'
+            referrerPolicy='no-referrer'
+            alt={`profile picture`}
+            src='/logo.png'
+            width={640}
+            height={640}
+          />
+
+          <h2 className='relative mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
+            Freely Chat with Friends or AI.
+          </h2>
 
           <Button
             isLoading={isLoading}
             type='button'
-            className='max-w-sm mx-auto w-full'
+            className='relative max-w-sm mx-auto w-full'
             onClick={loginWithGoogle}>
             {isLoading ? null : (
               <svg
@@ -79,7 +84,9 @@ const Page: FC = () => {
             )}
             Google
           </Button>
+
         </div>
+
       </div>
     </>
   )
