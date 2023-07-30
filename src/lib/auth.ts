@@ -43,6 +43,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       console.log("in session")
       console.log(session)
+      console.log("in session token")
       console.log(token)
       if (token) {
         session.user.id = token.id
@@ -60,14 +61,14 @@ export const authOptions: NextAuthOptions = {
       console.log(token)
       console.log(token.id)
       let dbUserResult = ''
-      
+
       try {
         dbUserResult = await fetchRedis('get', `user:${token.id}`) as string
       } catch (error) {
         console.log(error)
         return token
       }
-
+      console.log("dbUserResult")
       console.log(dbUserResult)
       if (!dbUserResult) {
         if (user) {
