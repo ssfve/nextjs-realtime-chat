@@ -41,5 +41,5 @@ export default withAuth(
 )
 
 export const config = {
-  matchter: ['/', '/login', '/dashboard/:path*'],
+  matchter: ['/', '/login', '/dashboard/:path*', '/api/:path*'],
 }
