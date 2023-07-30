@@ -25,16 +25,16 @@ export const metadata = {
 
 const sidebarOptions: SidebarOption[] = [
   {
-    id: 1,
-    name: 'Add friend',
-    href: '/dashboard/add',
-    Icon: 'UserPlus',
-  },
-  {
     id: 2,
-    name: 'Chat with Bard AI',
+    name: 'Chat with Bard',
     href: 'https://bard.google.com/',
     Icon: 'User',
+  },
+  {
+    id: 1,
+    name: 'Add a friend',
+    href: '/dashboard/add',
+    Icon: 'UserPlus',
   },
 ]
 
