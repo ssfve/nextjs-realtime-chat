@@ -39,6 +39,7 @@ const Page: FC = () => {
             referrerPolicy='no-referrer'
             alt={`profile picture`}
             src='/logo.png'
+            priority
             width={640}
             height={640}
           />

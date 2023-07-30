@@ -26,9 +26,9 @@ function getGoogleCredentials() {
 
 export const authOptions: NextAuthOptions = {
   // adapter: UpstashRedisAdapter(db),
-  // session: {
-  //   strategy: 'jwt',
-  // },
+  session: {
+    strategy: 'jwt',
+  },
   pages: {
     signIn: '/login',
   },
@@ -51,28 +51,28 @@ export const authOptions: NextAuthOptions = {
 
       return session
     },
-    // async jwt({ token, user }) {
-    //   // return token
-    //   console.log("fetchRedis")
-    //   console.log(token.id)
-    //   const dbUserResult = await fetchRedis('get', `user:${token.id}`) as string
-    //   console.log(dbUserResult)
-    //   if (!dbUserResult) {
-    //     if (user) {
-    //       token.id = user!.id
-    //     }
+    async jwt({ token, user }) {
+      // return token
+      console.log("fetchRedis")
+      console.log(token.id)
+      const dbUserResult = await fetchRedis('get', `user:${token.id}`) as string
+      console.log(dbUserResult)
+      if (!dbUserResult) {
+        if (user) {
+          token.id = user!.id
+        }
 
-    //     return token
-    //   }
-    //   const dbUser = JSON.parse(dbUserResult) as User
+        return token
+      }
+      const dbUser = JSON.parse(dbUserResult) as User
 
-    //   return {
-    //     id: dbUser.id,
-    //     name: dbUser.name,
-    //     email: dbUser.email,
-    //     picture: dbUser.image,
-    //   }
-    // },
+      return {
+        id: dbUser.id,
+        name: dbUser.name,
+        email: dbUser.email,
+        picture: dbUser.image,
+      }
+    },
     redirect() {
       return '/dashboard'
     },
