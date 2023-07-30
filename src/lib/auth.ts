@@ -44,28 +44,6 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({ token, user }) {
-      const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as
-        | string
-        | null
-
-      if (!dbUserResult) {
-        if (user) {
-          token.id = user!.id
-        }
-
-        return token
-      }
-      console.log(dbUserResult)
-      const dbUser = JSON.parse(dbUserResult) as User
-
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-        picture: dbUser.image,
-      }
-    },
     async session({ session, token }) {
       console.log(token)
       if (token) {
@@ -76,6 +54,29 @@ export const authOptions: NextAuthOptions = {
       }
 
       return session
+    },
+    async jwt({ token, user }) {
+      console.log("fetchRedis")
+      console.log(token.id)
+      const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as
+        | string
+        | null
+      console.log(dbUserResult)
+      if (!dbUserResult) {
+        if (user) {
+          token.id = user!.id
+        }
+
+        return token
+      }
+      const dbUser = JSON.parse(dbUserResult) as User
+
+      return {
+        id: dbUser.id,
+        name: dbUser.name,
+        email: dbUser.email,
+        picture: dbUser.image,
+      }
     },
     redirect() {
       return '/dashboard'
