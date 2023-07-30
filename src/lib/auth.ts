@@ -38,9 +38,11 @@ export const authOptions: NextAuthOptions = {
       clientSecret: getGoogleCredentials().clientSecret,
     }),
   ],
-  // secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async session({ session, token }) {
+      console.log("in session")
+      console.log(session)
       console.log(token)
       if (token) {
         session.user.id = token.id
@@ -54,6 +56,8 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       // return token
       console.log("fetchRedis")
+      console.log(user)
+      console.log(token)
       console.log(token.id)
       const dbUserResult = await fetchRedis('get', `user:${token.id}`) as string
       console.log(dbUserResult)
