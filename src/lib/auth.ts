@@ -25,7 +25,7 @@ function getGoogleCredentials() {
 }
 
 export const authOptions: NextAuthOptions = {
-  adapter: UpstashRedisAdapter(db),
+  // adapter: UpstashRedisAdapter(db),
   session: {
     strategy: 'jwt',
   },
@@ -37,9 +37,6 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: getGoogleCredentials().clientId,
       clientSecret: getGoogleCredentials().clientSecret,
-      httpOptions: {
-        timeout: 40000,
-      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
