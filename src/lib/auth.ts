@@ -59,7 +59,15 @@ export const authOptions: NextAuthOptions = {
       console.log(user)
       console.log(token)
       console.log(token.id)
-      const dbUserResult = await fetchRedis('get', `user:${token.id}`) as string
+      let dbUserResult = ''
+      
+      try {
+        dbUserResult = await fetchRedis('get', `user:${token.id}`) as string
+      } catch (error) {
+        console.log(error)
+        return token
+      }
+
       console.log(dbUserResult)
       if (!dbUserResult) {
         if (user) {
@@ -68,6 +76,7 @@ export const authOptions: NextAuthOptions = {
 
         return token
       }
+
       const dbUser = JSON.parse(dbUserResult) as User
 
       return {
