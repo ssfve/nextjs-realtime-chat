@@ -33,7 +33,7 @@ const sidebarOptions: SidebarOption[] = [
   {
     id: 2,
     name: 'Chat with Bard AI',
-    href: '/dashboard/add',
+    href: 'https://bard.google.com/',
     Icon: 'User',
   },
 ]
@@ -86,10 +86,6 @@ const Layout = async ({ children }: LayoutProps) => {
 
               <ul role='list' className='-mx-2 mt-2 space-y-1'>
                 {sidebarOptions.map((option) => {
-                  if (option.name === 'Chat with Bard AI') {
-                    window.open('https://bard.google.com/', '_blank')
-                    return null
-                  }
                   const Icon = Icons[option.Icon]
                   return (
                     <li key={option.id}>
