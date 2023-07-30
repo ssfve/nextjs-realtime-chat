@@ -56,7 +56,7 @@ export const authOptions: NextAuthOptions = {
 
         return token
       }
-
+      console.log(dbUserResult)
       const dbUser = JSON.parse(dbUserResult) as User
 
       return {
@@ -67,6 +67,7 @@ export const authOptions: NextAuthOptions = {
       }
     },
     async session({ session, token }) {
+      console.log(token)
       if (token) {
         session.user.id = token.id
         session.user.name = token.name
